@@ -11,5 +11,6 @@ public class Public_Variables_Class : MonoBehaviour
 
     public float tower_angle_horizontal;
     public float tower_angle_vertical;
+    public float shot_cooldown = 1.5f;
 
 }
