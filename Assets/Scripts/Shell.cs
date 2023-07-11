@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Shell : MonoBehaviour
 {
+    public Public_Variables_Class public_Variables_Class_Link;
     private float time_count = 0;
     public GameObject explosion_abstract;
     public GameObject yellow_explosion_abstract;
@@ -25,6 +26,11 @@ public class Shell : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.transform.tag == "Enemy")
+        {
+            other.GetComponent<Enemy>().current_health -= 25;
+
+        }
         GameObject explosion = Instantiate(explosion_abstract) as GameObject;
         explosion.transform.position = transform.position;
         GameObject y_explosion = Instantiate(yellow_explosion_abstract) as GameObject;

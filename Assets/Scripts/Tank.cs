@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class Tank : MonoBehaviour
 {
+    //[SerializeField] private float maxHealth = 3;
+    //[SerializeField] protected GameObject deathEffect, hitEffect;
+    //private float currentHealth;
+
+    //[SerializeField] private Healthbar healthbar;
+
     private GameObject _public_Var;
     private GameObject tank_tower;
     private GameObject tank_fictive_gun;
@@ -11,6 +17,9 @@ public class Tank : MonoBehaviour
 
     public GameObject shell_abstract;
     private float shot_power = 40f;
+    private float shot_damage = 25f;
+    private float max_health = 100f;
+    private float current_health;
     public AudioClip shot_clip;
     public bool shot_button_clicked = false;
     public bool shot_allowed = true;
@@ -20,10 +29,13 @@ public class Tank : MonoBehaviour
    
     void Start()
     {
-        _public_Var = GameObject.Find("___public_variables_class");
+        current_health = max_health;
+
+        //healthbar.UpdateHealthBar(maxHealth, currentHealth);
+
 
         tank_tower = transform.GetChild(0).gameObject;
-
+        _public_Var = GameObject.Find("___public_variables_class");
         tank_fictive_gun = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         tank_gun = tank_fictive_gun.transform.GetChild(0).gameObject;
         tank_back_view_camera = transform.GetChild(1).gameObject;

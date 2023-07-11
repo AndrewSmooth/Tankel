@@ -9,7 +9,7 @@ public class Tank_controller : MonoBehaviour
 
     private float tank_Move_Direction;
     private float tank_Rotation_Direction;
-    private float tank_Move_Speed = 4f;
+    private float tank_Move_Speed = 8f;
     private float tank_Rotation_Speed = 50f;
 
     private void Start()

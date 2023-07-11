@@ -46,9 +46,10 @@ GameObject:
   - component: {fileID: 129345297089378517}
   - component: {fileID: -868162117682254249}
   - component: {fileID: -1465031609547441827}
+  - component: {fileID: 2014316552385747997}
   m_Layer: 0
   m_Name: ___Tank
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +102,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4454839817267882130}
   serializedVersion: 4
-  m_Mass: 10
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -156,7 +157,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 6.0277348
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -232,6 +233,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &2014316552385747997
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4454839817267882130}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4021759, y: 1.128048, z: 1.5010242}
+  m_Center: {x: -0.015468597, y: 1.5120893, z: 0.01546824}
 --- !u!1 &4955809293957127393
 GameObject:
   m_ObjectHideFlags: 0
