@@ -96,8 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5796cf22607be284f835db0735824b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  public_Variables_Class_Link: {fileID: 0}
   explosion_abstract: {fileID: 606912225695655457, guid: 75a3e29acea45c5488b4f3722ffeca55, type: 3}
   yellow_explosion_abstract: {fileID: 8439283208740375804, guid: 15a162224864c9e488a804db5df5733d, type: 3}
+  force: 2000
+  rb: {fileID: 0}
 --- !u!1001 &1758049619580848781
 PrefabInstance:
   m_ObjectHideFlags: 0

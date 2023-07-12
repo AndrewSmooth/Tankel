@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ public class Shell : MonoBehaviour
     private float time_count = 0;
     public GameObject explosion_abstract;
     public GameObject yellow_explosion_abstract;
+
+    public float force = 2000f;
+    public Rigidbody rb;
 
     void Start()
     {
@@ -29,7 +33,14 @@ public class Shell : MonoBehaviour
         if (other.transform.tag == "Enemy")
         {
             other.GetComponent<Enemy>().current_health -= 25;
-
+            rb = other.GetComponent<Rigidbody>();
+            rb.AddForceAtPosition(transform.forward * force, transform.position);
+        }
+        if (other.transform.tag == "Player")
+        {
+            other.GetComponent<Tank>().current_health -= 25;
+            rb = other.GetComponent<Rigidbody>();
+            rb.AddForceAtPosition(transform.forward * force, transform.position);
         }
         GameObject explosion = Instantiate(explosion_abstract) as GameObject;
         explosion.transform.position = transform.position;

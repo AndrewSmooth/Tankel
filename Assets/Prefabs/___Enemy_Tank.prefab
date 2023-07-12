@@ -412,7 +412,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3.030552, y: 1.0219519, z: 4.0038743}
@@ -427,10 +427,10 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 10
   m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0.79, y: 0.98, z: 0.59}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_InertiaRotation: {x: 0.0053259823, y: 0.0011214284, z: 0.0024373834, w: 0.9999822}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -458,6 +458,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   shell_abstract: {fileID: 2301913362912839502, guid: 34082d457b0d4a449ab78623801a17cd, type: 3}
+  canvas: {fileID: 6423560869274670372, guid: 283b0706fa58a2e439f8972e65ffd3cc, type: 3}
+  current_health: 0
   shot_allowed: 1
 --- !u!65 &8938350437054445659
 BoxCollider:

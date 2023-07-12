@@ -102,7 +102,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4454839817267882130}
   serializedVersion: 4
-  m_Mass: 5
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -134,9 +134,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shell_abstract: {fileID: 2301913362912839502, guid: 34082d457b0d4a449ab78623801a17cd, type: 3}
+  current_health: 0
   shot_clip: {fileID: 8300000, guid: 59b51774f67bb94479d9a993655cd36d, type: 3}
   shot_button_clicked: 0
   shot_allowed: 1
+  canvas: {fileID: 8486727349595735903, guid: 9a5736e5f01dd7f4796cfb5fd503bd4a, type: 3}
 --- !u!82 &-1465031609547441827
 AudioSource:
   m_ObjectHideFlags: 0
@@ -312,7 +314,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6376906131164595613}
   m_LocalRotation: {x: 0.08294162, y: 0.000121441284, z: -0.00030928804, w: 0.9965544}
-  m_LocalPosition: {x: -0.1, y: 3.94, z: -7.24}
+  m_LocalPosition: {x: -0.1, y: 4.25, z: -7.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

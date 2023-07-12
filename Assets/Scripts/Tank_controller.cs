@@ -12,6 +12,9 @@ public class Tank_controller : MonoBehaviour
     private float tank_Move_Speed = 8f;
     private float tank_Rotation_Speed = 50f;
 
+
+   
+
     private void Start()
     {
         tank = Instantiate(tank_abstract) as GameObject;
@@ -58,10 +61,10 @@ public class Tank_controller : MonoBehaviour
             }
         }
 
-        tank.transform.Translate(0, 0, tank_Move_Direction * tank_Move_Speed * Time.deltaTime, Space.Self);
+      
+        tank.transform.Translate(0, 0, tank_Move_Direction * tank_Move_Speed * Time.deltaTime, Space.Self);      
         tank.transform.Rotate(0, tank_Rotation_Direction * tank_Rotation_Speed * Time.deltaTime, 0, Space.Self);
-
+       
     
     }
     }
-
