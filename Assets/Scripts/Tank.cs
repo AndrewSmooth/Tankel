@@ -1,6 +1,6 @@
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Tank : MonoBehaviour
 {
@@ -20,8 +20,10 @@ public class Tank : MonoBehaviour
     public bool shot_button_clicked = false;
     public bool shot_allowed = true;
     private float shot_cooldown_count = 0f;
+    
 
     public Canvas canvas;
+    public Canvas game_over_window_abstract;
     private Canvas_Bar canvas_bar;
 
 
@@ -45,19 +47,25 @@ public class Tank : MonoBehaviour
    
     void Update()
     {
-        Camera_Switch();
-        Tower_and_Gun_Rotation();
-        Shot_Check();
-        canvas_bar.Health_Bar_Update(current_health, max_health);
-        canvas_bar.transform.position = tank_tower.transform.position;
-        canvas_bar.transform.Translate(0f, -0.6f, 2f, Space.Self);
-        Vector3 direction = tank_back_view_camera.transform.position - canvas_bar.transform.position;
-        canvas_bar.transform.rotation = Quaternion.LookRotation(direction);
-        if (current_health <= 0)
+        if (_public_Var.GetComponent<Public_Variables_Class>().game_over | current_health <= 0)
         {
-            Destroy(gameObject);
+            if (current_health <= 0)
+                SceneManager.LoadScene("DeathScene");
+            else
+                SceneManager.LoadScene("GameOverScene");
+           
         }
-
+        else
+        {
+            Camera_Switch();
+            Tower_and_Gun_Rotation();
+            Shot_Check();
+            canvas_bar.Health_Bar_Update(current_health, max_health);
+            canvas_bar.transform.position = tank_tower.transform.position;
+            canvas_bar.transform.Translate(0f, -0.6f, 2f, Space.Self);
+            Vector3 direction = tank_back_view_camera.transform.position - canvas_bar.transform.position;
+            canvas_bar.transform.rotation = Quaternion.LookRotation(direction);
+        }
     }
         
     private void Tower_and_Gun_Rotation()
@@ -109,7 +117,9 @@ public class Tank : MonoBehaviour
     
     private void Shoot()
     {
-        GameObject shell = Instantiate(shell_abstract) as GameObject;
+        GameObject shell = Instantiate(shell_abstract);
+        shell.GetComponent<Shell>().force = shot_power * 25;
+        shell.GetComponent<Shell>().damage = shot_damage;
         shell.transform.position = tank_gun.transform.position;
         shell.transform.rotation = tank_gun.transform.rotation;
         shell.transform.Translate(0, 0, 1.5f, Space.Self);

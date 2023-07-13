@@ -10,7 +10,8 @@ public class Shell : MonoBehaviour
     public GameObject explosion_abstract;
     public GameObject yellow_explosion_abstract;
 
-    public float force = 2000f;
+    public float force;
+    public float damage;
     public Rigidbody rb;
 
     void Start()
@@ -18,7 +19,6 @@ public class Shell : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         time_count += Time.deltaTime;
@@ -32,13 +32,13 @@ public class Shell : MonoBehaviour
     {
         if (other.transform.tag == "Enemy")
         {
-            other.GetComponent<Enemy>().current_health -= 25;
+            other.GetComponent<Enemy>().current_health -= damage;
             rb = other.GetComponent<Rigidbody>();
             rb.AddForceAtPosition(transform.forward * force, transform.position);
         }
         if (other.transform.tag == "Player")
         {
-            other.GetComponent<Tank>().current_health -= 25;
+            other.GetComponent<Tank>().current_health -= damage;
             rb = other.GetComponent<Rigidbody>();
             rb.AddForceAtPosition(transform.forward * force, transform.position);
         }

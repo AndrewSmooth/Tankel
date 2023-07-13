@@ -536,6 +536,8 @@ MonoBehaviour:
   tower_angle_horizontal: 0
   tower_angle_vertical: 0
   shot_cooldown: 1.5
+  game_over: 0
+  scores: 0
 --- !u!4 &1142993618
 Transform:
   m_ObjectHideFlags: 0
@@ -576,4 +578,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e18e80742403c42bad5cd0dbd9d4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reset1_count: 0
+  reset2_count: 0
+  reset3_count: 0
+  reset4_count: 0
+  reset_time: 20
   enemy_abstract: {fileID: 9171971150345832282, guid: a99780d12f6937b4f9253e4c0c3305d0, type: 3}

@@ -139,6 +139,7 @@ MonoBehaviour:
   shot_button_clicked: 0
   shot_allowed: 1
   canvas: {fileID: 8486727349595735903, guid: 9a5736e5f01dd7f4796cfb5fd503bd4a, type: 3}
+  game_over_window_abstract: {fileID: 2739312907828668758, guid: eadf29e0bcc806947973278252be43f0, type: 3}
 --- !u!82 &-1465031609547441827
 AudioSource:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ using static UnityEngine.GraphicsBuffer;
 public class Enemy : MonoBehaviour
 {
 
-   
+    
     public float speed;
     private Transform player;
     public AudioClip shot_clip;
@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
 
     public Canvas canvas;
     private Canvas_Bar canvas_bar;
-    private float tower_rotation_time_count = 0;
+          
     private float distance;
     private bool tower_rotation = true;
     public float tower_rotationi_speed = 50;
@@ -29,14 +29,8 @@ public class Enemy : MonoBehaviour
     private GameObject tank_fictive_gun;
     private GameObject tank_gun;
     
-  
-    
-    
-    
-   
-
     private float shot_power = 40f;
-    private float shot_damage = 25f;
+    private float shot_damage = 25f;    
     private float max_health = 100f;
     public float current_health;
     public bool shot_allowed = true;
@@ -45,7 +39,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         current_health = max_health;
-        
+       
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _public_Var = GameObject.Find("___public_variables_class");
 
@@ -62,46 +56,48 @@ public class Enemy : MonoBehaviour
     
     void Update()
     {
-        canvas_bar.Health_Bar_Update(current_health, max_health);
-        canvas_bar.transform.position = tank_tower.transform.position;
-        canvas_bar.transform.Translate(0, 2f, 0, Space.Self);
-        canvas_bar.transform.rotation = tank_tower.transform.rotation;
-
-        if (current_health <= 0)
+        if (_public_Var.GetComponent<Public_Variables_Class>().game_over)
         {
             Destroy(gameObject);
         }
-
-        tower_rotation_time_count += Time.deltaTime;
-
-        Vector3 direction = player.position - transform.position;
-        distance = direction.magnitude;
-
-        if (tower_rotation)
-
-            
-            tank_tower.transform.rotation = Quaternion.RotateTowards(tank_tower.transform.rotation, Quaternion.LookRotation(direction), tower_rotationi_speed * Time.deltaTime);
-
-        if (distance > 20)
-        {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), tank_rotation_speed * Time.deltaTime);
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        }
-        Shot_Check();
-
-
-        
-        float tower_tank_angle = Vector3.Angle(tank_tower.transform.up, transform.forward);
-
-        if (tower_tank_angle > 110 | tower_tank_angle < 70)
-        {
-            tower_rotation = false;
-            print("Close");
-                }
         else
-            tower_rotation = true;
-        
+        {
+            canvas_bar.Health_Bar_Update(current_health, max_health);
+            canvas_bar.transform.position = tank_tower.transform.position;
+            canvas_bar.transform.Translate(0, 2f, 0, Space.Self);
+            canvas_bar.transform.rotation = tank_tower.transform.rotation;
 
+            if (current_health <= 0)
+            {
+                Destroy(gameObject);
+                _public_Var.GetComponent<Public_Variables_Class>().scores += 1;
+                print("+1 очко");
+            }
+
+            Vector3 direction = player.position - transform.position;
+            distance = direction.magnitude;
+
+            if (tower_rotation)
+                tank_tower.transform.rotation = Quaternion.RotateTowards(tank_tower.transform.rotation, Quaternion.LookRotation(direction), tower_rotationi_speed * Time.deltaTime);
+
+            if (distance > 20)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), tank_rotation_speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            }
+            Shot_Check();
+
+            float tower_tank_angle = Vector3.Angle(tank_tower.transform.up, transform.forward);
+
+            if (tower_tank_angle > 110 | tower_tank_angle < 70)
+            {
+                tower_rotation = false;
+                print("Close");
+            }
+            else
+                tower_rotation = true;
+
+        }
     }
 
     private void Shot_Check()
@@ -124,11 +120,14 @@ public class Enemy : MonoBehaviour
     private void Shoot()
     {
         GameObject shell = Instantiate(shell_abstract);
+        shell.GetComponent<Shell>().force = shot_power * 25;
+        shell.GetComponent<Shell>().damage = shot_damage;
         shell.transform.position = tank_gun.transform.position;
         shell.transform.rotation = tank_gun.transform.rotation;
         shell.transform.Translate(0, 0, 1.5f, Space.Self);
         shell.GetComponent<Rigidbody>().AddRelativeForce(shell.transform.forward * shot_power, ForceMode.VelocityChange);
         Play_Audio(shot_clip);
+        
 
     }
 

@@ -5,7 +5,7 @@ public class Tank_controller : MonoBehaviour
     public Public_Variables_Class public_Variables_Class_Link;
     public GameObject tank_abstract;
     private GameObject tank;
-    private Vector3 start_tank_position = new Vector3(0f, 1f, 0f);
+    private Vector3 start_tank_position = new Vector3(11, 0, 20);
 
     private float tank_Move_Direction;
     private float tank_Rotation_Direction;
