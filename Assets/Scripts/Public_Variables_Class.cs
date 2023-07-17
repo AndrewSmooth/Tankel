@@ -14,8 +14,9 @@ public class Public_Variables_Class : MonoBehaviour
     public float tower_angle_vertical;
     public float shot_cooldown = 1.5f;
     public bool game_over = false;
+    public bool game_start = true;
 
-    private float scores_to_win = 6;
+    public float scores_to_win = 6;
     public float scores = 0;
 
     void Update()

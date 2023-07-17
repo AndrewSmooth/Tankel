@@ -57,6 +57,7 @@ public class Tank : MonoBehaviour
         }
         else
         {
+            
             Camera_Switch();
             Tower_and_Gun_Rotation();
             Shot_Check();

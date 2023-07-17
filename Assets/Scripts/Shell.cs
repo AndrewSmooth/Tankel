@@ -30,15 +30,16 @@ public class Shell : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Enemy")
+        if (other.transform.tag == "Enemy" | other.transform.tag == "Player")
         {
-            other.GetComponent<Enemy>().current_health -= damage;
-            rb = other.GetComponent<Rigidbody>();
-            rb.AddForceAtPosition(transform.forward * force, transform.position);
-        }
-        if (other.transform.tag == "Player")
-        {
-            other.GetComponent<Tank>().current_health -= damage;
+            if (other.transform.tag == "Enemy")
+            {
+                other.GetComponent<Enemy>().current_health -= damage;
+            }
+            else
+            {
+                other.GetComponent<Tank1>().current_health -= damage;
+            }
             rb = other.GetComponent<Rigidbody>();
             rb.AddForceAtPosition(transform.forward * force, transform.position);
         }

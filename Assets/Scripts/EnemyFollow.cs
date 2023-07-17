@@ -26,7 +26,7 @@ public class EnemyFollow : MonoBehaviour
 
     void Start()
 
-    {   
+    {
         enemy1 = Instantiate(enemy_abstract) as GameObject;
         enemy1.transform.position = start_enemy1_position;
 
@@ -43,7 +43,7 @@ public class EnemyFollow : MonoBehaviour
 
     void Update() 
     {
-        
+
         if (enemy1.IsDestroyed())
         {
             reset1_count += Time.deltaTime;
